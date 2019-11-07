@@ -37,9 +37,9 @@ public class FamilyResource {
 	@GetMapping(value = "/{id}")
 	@ApiOperation(value = "Find a family by id", response = Family.class)
 	public ResponseEntity<Family> findById(@PathVariable(value = "id") long id) {
-		Optional<Family> family = familyService.findById(id);
-		if (family.isPresent()) {
-			return ResponseEntity.ok(family.get());
+		Optional<Family> selectedFamily = familyService.findById(id);
+		if (selectedFamily.isPresent()) {
+			return ResponseEntity.ok(selectedFamily.get());
 		}
 		
 		return ResponseEntity.notFound().build();
@@ -53,9 +53,9 @@ public class FamilyResource {
 	
 	@DeleteMapping(value = "/{id}")
 	@ApiOperation(value = "Delete a family")
-	public ResponseEntity<Family> excluir(@PathVariable(value = "id") long id) {
-		Optional<Family> family = familyService.findById(id);
-		if (family.isPresent()) {
+	public ResponseEntity<Family> delete(@PathVariable(value = "id") long id) {
+		Optional<Family> selectedFamily = familyService.findById(id);
+		if (selectedFamily.isPresent()) {
 			familyService.deleteById(id);
 			return ResponseEntity.ok().build();
 		}
@@ -66,8 +66,8 @@ public class FamilyResource {
 	@PutMapping
 	@ApiOperation(value = "Update a family", response = Family.class)
 	public ResponseEntity<Family> update(@RequestBody Family family, @PathVariable(value = "id") long id) {
-		Optional<Family> oldFamily = familyService.findById(id);
-		if (oldFamily.isPresent()) {
+		Optional<Family> selectedFamily = familyService.findById(id);
+		if (selectedFamily.isPresent()) {
 			return ResponseEntity.ok(familyService.save(family));
 		}
 		

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.com.engdb.treegen.domain.Family;
+import br.com.engdb.treegen.domain.Person;
 import br.com.engdb.treegen.repository.FamilyRepository;
 
 @Service
@@ -35,6 +36,11 @@ public class FamilyServiceImpl implements FamilyService {
 	@Override
 	public void deleteById(long id) {
 		familyRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Person> getMembersByFamilyId(long familyId) {
+		return familyRepository.getMembersByFamilyId(familyId);
 	}
 	
 }

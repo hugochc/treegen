@@ -24,5 +24,48 @@ public class Person extends Domain {
 	
 	@ManyToOne
 	private Person mother;
+	
+	@ManyToOne
+	private Family family;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Calendar getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Calendar birth) {
+		this.birth = birth;
+	}
+
+	public Person getFather() {
+		return father;
+	}
+
+	public void setFather(Person father) {
+		this.father = father;
+	}
+
+	public Person getMother() {
+		return mother;
+	}
+
+	public void setMother(Person mother) {
+		this.mother = mother;
+	}
+
+	public Family getFamily() {
+		return family;
+	}
+
+	public void setFamily(Family family) {
+		this.family = family;
+	}
 
 }

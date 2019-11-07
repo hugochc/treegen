@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.engdb.treegen.domain.Family;
+import br.com.engdb.treegen.domain.Person;
 
 public interface FamilyService {
 
@@ -14,5 +15,7 @@ public interface FamilyService {
 	Family save(Family family);
 	
 	void deleteById(long id);
+	
+	List<Person> getMembersByFamilyId(long familyId);
 	
 }
